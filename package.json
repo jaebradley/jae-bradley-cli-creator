@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
-    "ajv": "^5.0.0",
+    "ajv": "^6.3.0",
     "child-process-promise": "^2.2.1",
     "commander": "^2.15.1",
     "fs-extra": "^5.0.0",
