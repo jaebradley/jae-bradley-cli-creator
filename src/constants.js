@@ -1,5 +1,5 @@
 const babelrc = JSON.stringify({
-  "presets": ["@babel/preset-env"]
+  presets: ['@babel/preset-env'],
 }, null, 2);
 
 const eslintignore = `
@@ -9,10 +9,10 @@ node_modules
 `;
 
 const eslintrc = JSON.stringify({
-  "extends": "airbnb-base",
-  "env": {
-    "jest": true
-  }
+  extends: 'airbnb-base',
+  env: {
+    jest: true,
+  },
 }, null, 2);
 
 const gitignore = `
