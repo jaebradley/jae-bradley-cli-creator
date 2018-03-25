@@ -7,31 +7,44 @@ import promptPackageName from './prompters/promptPackageName';
 import promptGitHubUsername from './prompters/promptGitHubUsername';
 import promptPackageDescription from './prompters/promptPackageDescription';
 import generatePackageJSON from './generatePackageJSON';
+import {
+  babelrc,
+  eslintignore,
+  eslintrc,
+  gitignore,
+  npmignore,
+  travis,
+  commitlint,
+} from './constants';
 
 const filesToCopy = Object.freeze([
   {
     targetFilePath: '.babelrc',
-    sourcedFilePath: './build/files/.babelrc',
+    content: babelrc,
   },
   {
     targetFilePath: '.eslintignore',
-    sourcedFilePath: './build/files/.eslintignore',
+    content: eslintignore,
   },
   {
     targetFilePath: '.eslintrc',
-    sourcedFilePath: './build/files/.eslintrc',
+    content: eslintrc,
   },
   {
     targetFilePath: '.gitignore',
-    sourcedFilePath: './build/files/.gitignore',
+    content: gitignore,
+  },
+  {
+    targetFilePath: '.npmignore',
+    content: npmignore,
   },
   {
     targetFilePath: '.travis.yml',
-    sourcedFilePath: './build/files/.travis.yml',
+    content: travis,
   },
   {
     targetFilePath: 'commitlint.config.js',
-    sourcedFilePath: './build/files/commitlint.config.js',
+    content: commitlint,
   },
 ]);
 
@@ -70,17 +83,7 @@ const createPackage = async () => {
     throw error;
   }
 
-  filesToCopy.forEach(async ({ targetFilePath, sourcedFilePath }) => {
-    let content;
-    try {
-      const rawContent = await fs.readFile(sourcedFilePath);
-      content = rawContent.toString();
-      console.log(`Copied content from ${sourcedFilePath}!`);
-    } catch (error) {
-      console.error(`Could not copy content from ${sourcedFilePath}`);
-      throw error;
-    }
-
+  filesToCopy.forEach(async ({ targetFilePath, content }) => {
     const filePath = `${targetDirectory}/${targetFilePath}`;
     try {
       await fs.outputFile(filePath, content);
@@ -104,6 +107,7 @@ const createPackage = async () => {
   });
 
   try {
+    console.log(`Navigating to ${targetDirectory} and running npm install`);
     await exec(`cd ${targetDirectory}; npm install`);
     console.log(`Navigated to ${targetDirectory} and ran npm install!`);
   } catch (error) {
