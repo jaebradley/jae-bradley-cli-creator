@@ -2,8 +2,7 @@ const babelrc = JSON.stringify({
   presets: ['@babel/preset-env'],
 }, null, 2);
 
-const eslintignore = `
-coverage/*
+const eslintignore = `coverage/*
 build
 node_modules
 `;
@@ -15,8 +14,7 @@ const eslintrc = JSON.stringify({
   },
 }, null, 2);
 
-const gitignore = `
-# Logs
+const gitignore = `# Logs
 logs
 *.log
 npm-debug.log*
@@ -79,8 +77,7 @@ build
 .DS_Store
 `;
 
-const npmignore = `
-.DS_Store
+const npmignore = `.DS_Store
 .eslintcache
 node_modules
 npm-debug.log
@@ -91,8 +88,7 @@ test/
 coverage/
 `;
 
-const travis = `
-language: node_js
+const travis = `language: node_js
 cache:
   directories:
     - ~/.npm
