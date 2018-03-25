@@ -1,7 +1,7 @@
 {
-  "name": "jae-bradley-create-npm-package-cli-cli",
+  "name": "jae-bradley-cli-creator",
   "version": "0.0.0-development",
-  "description": "Generate new CLI package from the command line",
+  "description": "Generate a new CLI package from the command line, based on my personal preferences",
   "main": "index.js",
   "bin": {
     "jb-create-cli": "build/executables/jb-create-cli.js"
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaebradley/jae-bradley-create-npm-package-cli-cli.git"
+    "url": "https://github.com/jaebradley/jae-bradley-cli-creator.git"
   },
   "keywords": [
     "cli",
@@ -29,9 +29,9 @@
   "author": "jae.b.bradley@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jaebradley/jae-bradley-create-npm-package-cli-cli/issues"
+    "url": "https://github.com/jaebradley/jae-bradley-cli-creator/issues"
   },
-  "homepage": "https://github.com/jaebradley/jae-bradley-create-npm-package-cli-cli#readme",
+  "homepage": "https://github.com/jaebradley/jae-bradley-cli-creator#readme",
   "jest": {
     "testEnvironment": "node"
   },
