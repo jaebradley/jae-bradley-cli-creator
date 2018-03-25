@@ -106,8 +106,8 @@ const createPackage = async () => {
     }
   });
 
+  console.log(`Navigating to ${targetDirectory} and running npm install`);
   try {
-    console.log(`Navigating to ${targetDirectory} and running npm install`);
     await exec(`cd ${targetDirectory}; npm install`);
     console.log(`Navigated to ${targetDirectory} and ran npm install!`);
   } catch (error) {
