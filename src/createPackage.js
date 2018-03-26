@@ -115,7 +115,7 @@ const createPackage = async () => {
 
     console.log(`Navigating to ${targetDirectory} and installing all dependencies`);
     try {
-      await exec(`cd ${targetDirectory}; npm install --save-dev ${devDependencies.join(' ')}; npm install --save ${dependencies.join(' ')}`);
+      await exec(`cd ${targetDirectory}; npm install --save-dev ${devDependencies.join(' ')}; npm install --save ${dependencies.join(' ')}; git init`);
       console.log(`Navigated to ${targetDirectory} and installed all dependencies!`);
     } catch (error) {
       console.error(`Failed to navigate to ${targetDirectory} and install all dependencies`);
