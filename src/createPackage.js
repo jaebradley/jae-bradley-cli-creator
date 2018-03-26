@@ -48,21 +48,39 @@ const filesToCopy = Object.freeze([
   },
 ]);
 
-const filesToCreate = Object.freeze([
-  'LICENSE',
-  'README.md',
+const devDependencies = Object.freeze([
+  '@babel/cli',
+  '@babel/core',
+  '@babel/preset-env',
+  '@commitlint/cli',
+  '@commitlint/config-angular',
+  '@commitlint/prompt',
+  '@commitlint/prompt-cli',
+  'codecov',
+  'eslint',
+  'eslint-config-airbnb-base',
+  'eslint-plugin-import',
+  'husky',
+  'jest',
+  'semantic-release',
+  'travis-deploy-once',
+]);
+
+const dependencies = Object.freeze([
+  'commander',
+  'inquirer',
 ]);
 
 const createPackage = async () => {
   let { targetDirectory } = await promptTargetDirectory();
   const { packageName } = await promptPackageName();
   const { packageDescription } = await promptPackageDescription();
-  const { gitHubUserName } = await promptGitHubUsername();
+  const { gitHubUsername } = await promptGitHubUsername();
 
   const generatedPackageJSON = generatePackageJSON({
     name: packageName,
     description: packageDescription,
-    gitHubUserName,
+    gitHubUsername,
   });
 
   targetDirectory = untildify(targetDirectory);
@@ -76,42 +94,36 @@ const createPackage = async () => {
   }
 
   try {
-    await fs.outputFile(`${targetDirectory}/package.json`, generatedPackageJSON);
-    console.log('Created package.json!');
-  } catch (error) {
-    console.error('Could not create package.json');
-    throw error;
-  }
-
-  filesToCopy.forEach(async ({ targetFilePath, content }) => {
-    const filePath = `${targetDirectory}/${targetFilePath}`;
     try {
-      await fs.outputFile(filePath, content);
-      console.log(`Copied content to ${filePath}!`);
+      await fs.outputFile(`${targetDirectory}/package.json`, generatedPackageJSON);
+      console.log('Created package.json!');
     } catch (error) {
-      console.error(`Could not copy contents to ${filePath}`);
+      console.error('Could not create package.json');
       throw error;
     }
-  });
 
-  filesToCreate.forEach(async (targetFilePath) => {
-    const filePath = `${targetDirectory}/${targetFilePath}`;
+    filesToCopy.forEach(async ({ targetFilePath, content }) => {
+      const filePath = `${targetDirectory}/${targetFilePath}`;
+      try {
+        await fs.outputFile(filePath, content);
+        console.log(`Copied content to ${filePath}!`);
+      } catch (error) {
+        console.error(`Could not copy contents to ${filePath}`);
+        throw error;
+      }
+    });
 
+    console.log(`Navigating to ${targetDirectory} and installing all dependencies`);
     try {
-      await fs.outputFile(filePath);
-      console.log(`Created ${filePath}!`);
+      await exec(`cd ${targetDirectory}; npm install --save-dev ${devDependencies.join(' ')}; npm install --save ${dependencies.join(' ')}; git init`);
+      console.log(`Navigated to ${targetDirectory} and installed all dependencies!`);
     } catch (error) {
-      console.error(`Could not create ${filePath}`);
+      console.error(`Failed to navigate to ${targetDirectory} and install all dependencies`);
       throw error;
     }
-  });
-
-  console.log(`Navigating to ${targetDirectory} and running npm install`);
-  try {
-    await exec(`cd ${targetDirectory}; npm install`);
-    console.log(`Navigated to ${targetDirectory} and ran npm install!`);
   } catch (error) {
-    console.error(`Failed to navigate to ${targetDirectory} and run npm install`);
+    await fs.remove(targetDirectory);
+    console.log(`There was an error - removing ${targetDirectory}`);
     throw error;
   }
 };

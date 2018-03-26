@@ -113,8 +113,7 @@ jobs:
       script: npm run travis-deploy-once "npm run semantic-release"
 `;
 
-const commitlint = `
-module.exports = { extends: ['@commitlint/config-angular'] };
+const commitlint = `module.exports = { extends: ['@commitlint/config-angular'] };
 `;
 
 export {
