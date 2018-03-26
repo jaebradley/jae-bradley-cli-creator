@@ -56,6 +56,8 @@ const devDependencies = Object.freeze([
   '@commitlint/config-angular',
   '@commitlint/prompt',
   '@commitlint/prompt-cli',
+  'babel-core',
+  'babel-jest',
   'codecov',
   'eslint',
   'eslint-config-airbnb-base',
