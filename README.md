@@ -4,6 +4,8 @@
 
 CLI that creates the starting point for npm package CLI projects using a base template I like
 
+![alt-text](https://imgur.com/PkljD9Z.png)
+
 * [Features](#features)
 * [Files](#files)
   * [Contents](#contents)
