@@ -49,23 +49,74 @@ const filesToCopy = Object.freeze([
 ]);
 
 const devDependencies = Object.freeze([
-  '@babel/cli',
-  '@babel/core',
-  '@babel/preset-env',
-  '@commitlint/cli',
-  '@commitlint/config-angular',
-  '@commitlint/prompt',
-  '@commitlint/prompt-cli',
-  'babel-core',
-  'babel-jest',
-  'codecov',
-  'eslint',
-  'eslint-config-airbnb-base',
-  'eslint-plugin-import',
-  'husky',
-  'jest',
-  'semantic-release',
-  'travis-deploy-once',
+  {
+    name: '@babel/cli',
+    version: 'latest',
+  },
+  {
+    name: '@babel/core',
+    version: 'latest',
+  },
+  {
+    name: '@babel/preset-env',
+    version: 'latest',
+  },
+  {
+    name: '@commitlint/cli',
+    version: 'latest',
+  },
+  {
+    name: '@commitlint/config-angular',
+    version: 'latest',
+  },
+  {
+    name: '@commitlint/prompt',
+    version: 'latest',
+  },
+  {
+    name: '@commitlint/prompt-cli',
+    version: 'latest',
+  },
+  {
+    name: 'babel-jest',
+    version: 'latest',
+  },
+  {
+    name: 'babel-core',
+    version: '7.0.0-bridge.0',
+  },
+  {
+    name: 'codecov',
+    version: 'latest',
+  },
+  {
+    name: 'eslint',
+    version: 'latest',
+  },
+  {
+    name: 'eslint-config-airbnb-base',
+    version: 'latest',
+  },
+  {
+    name: 'eslint-plugin-import',
+    version: 'latest',
+  },
+  {
+    name: 'husky',
+    version: 'latest',
+  },
+  {
+    name: 'jest',
+    version: 'latest',
+  },
+  {
+    name: 'semantic-release',
+    version: 'latest',
+  },
+  {
+    name: 'travis-deploy-once',
+    version: 'latest',
+  },
 ]);
 
 const dependencies = Object.freeze([
@@ -117,7 +168,8 @@ const createPackage = async () => {
 
     console.log(`Navigating to ${targetDirectory} and installing all dependencies`);
     try {
-      await exec(`cd ${targetDirectory}; npm install --save-dev ${devDependencies.join(' ')}; npm install --save ${dependencies.join(' ')}; git init`);
+      const devDependencyInstallVersions = devDependencies.map(({ name, version }) => `${name}@${version}`).join(' ');
+      await exec(`cd ${targetDirectory}; npm install --save-dev ${devDependencyInstallVersions}; npm install --save ${dependencies.join(' ')}; git init`);
       console.log(`Navigated to ${targetDirectory} and installed all dependencies!`);
     } catch (error) {
       console.error(`Failed to navigate to ${targetDirectory} and install all dependencies`);
