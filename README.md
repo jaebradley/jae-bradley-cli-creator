@@ -7,24 +7,24 @@ CLI that creates the starting point for npm package CLI projects using a base te
 * [Features](#features)
 * [Files](#files)
   * [Contents](#contents)
-  * [`.babelrc`](#.babelrc)
-  * [`.eslintignore`](#.eslintignore)
-  * [`.eslintrc`](#.eslintrc)
-  * [`.gitignore`](#.gitignore)
-  * [`.npmignore`](#.npmignore)
-  * [`.travis.yml`](#.travis.yml)
+  * [`.babelrc`](#babelrc)
+  * [`.eslintignore`](#eslintignore)
+  * [`.eslintrc`](#eslintrc)
+  * [`.gitignore`](#gitignore)
+  * [`.npmignore`](#npmignore)
+  * [`.travis.yml`](#travis.yml)
   * [`commitlint.config.js`](#commitlint.config.js)
   * [`package.json`](#package.json)
 
 ## Features
 
-* `babel`
-* `jest`
-* `airbnb` `eslint` config
-* `angular` commit message convention
-* `husky` git hooks
-* `semantic-release`
-* `greenkeeper-lockfile` (i.e. use `Greenkeeper`)
+* [`babel`](https://babeljs.io/)
+* [`jest`](https://facebook.github.io/jest/)
+* [`airbnb` `eslint` config](https://www.npmjs.com/package/eslint-config-airbnb)
+* [`angular` commit message convention](https://www.npmjs.com/package/@commitlint/config-angular)
+* [`husky` git hooks](https://www.npmjs.com/package/husky)
+* [`semantic-release`](https://www.npmjs.com/package/semantic-release)
+* [`greenkeeper-lockfile`](https://github.com/greenkeeperio/greenkeeper-lockfile) (i.e. use `Greenkeeper`)
 
 ## Files
 
