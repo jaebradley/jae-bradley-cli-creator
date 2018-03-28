@@ -1,9 +1,0 @@
-.DS_Store
-.eslintcache
-node_modules
-npm-debug.log
-.travis.yml
-src/
-test/
-*.test.js
-coverage/
