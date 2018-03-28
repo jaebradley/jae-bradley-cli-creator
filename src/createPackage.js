@@ -1,5 +1,5 @@
 import fs from 'fs-extra';
-import { exec } from 'child-process-promise';
+import { spawn } from 'child_process';
 import untildify from 'untildify';
 
 import promptTargetDirectory from './prompters/promptTargetDirectory';
@@ -139,8 +139,9 @@ const createPackage = async () => {
   targetDirectory = untildify(targetDirectory);
 
   try {
-    await fs.ensureDir(targetDirectory);
-    console.log(`Found or created directory: ${targetDirectory}!`);
+    // Ensure the directory is created
+    fs.ensureDirSync(targetDirectory);
+    console.log(`Found or created directory: ${targetDirectory}`);
   } catch (error) {
     console.error(`Could not create / verify directory: ${targetDirectory}`);
     throw error;
@@ -148,8 +149,9 @@ const createPackage = async () => {
 
   try {
     try {
-      await fs.outputFile(`${targetDirectory}/package.json`, generatedPackageJSON);
-      console.log('Created package.json!');
+      // Ensure that the package.json file is created
+      fs.outputFileSync(`${targetDirectory}/package.json`, generatedPackageJSON);
+      console.log('Created package.json');
     } catch (error) {
       console.error('Could not create package.json');
       throw error;
@@ -159,24 +161,41 @@ const createPackage = async () => {
       const filePath = `${targetDirectory}/${targetFilePath}`;
       try {
         await fs.outputFile(filePath, content);
-        console.log(`Copied content to ${filePath}!`);
+        console.log(`Copied content to ${filePath}`);
       } catch (error) {
         console.error(`Could not copy contents to ${filePath}`);
         throw error;
       }
     });
 
-    console.log(`Navigating to ${targetDirectory} and installing all dependencies`);
     try {
-      const devDependencyInstallVersions = devDependencies.map(({ name, version }) => `${name}@${version}`).join(' ');
-      await exec(`cd ${targetDirectory}; npm install --save-dev ${devDependencyInstallVersions}; npm install --save ${dependencies.join(' ')}; git init`);
-      console.log(`Navigated to ${targetDirectory} and installed all dependencies!`);
+      spawn(
+        'npm',
+        [
+          'install',
+          '--save-dev',
+          ...devDependencies.map(({ name, version }) => `${name}@${version}`),
+        ],
+        { cwd: targetDirectory, stdio: 'inherit' },
+      );
+
+      spawn(
+        'npm',
+        [
+          'install',
+          '--save',
+          ...dependencies,
+        ],
+        { cwd: targetDirectory, stdio: 'inherit' },
+      );
+
+      spawn('git', ['init'], { cwd: targetDirectory, stdio: 'inherit' });
     } catch (error) {
       console.error(`Failed to navigate to ${targetDirectory} and install all dependencies`);
       throw error;
     }
   } catch (error) {
-    await fs.remove(targetDirectory);
+    await fs.removeSync(targetDirectory);
     console.log(`There was an error - removing ${targetDirectory}`);
     throw error;
   }
