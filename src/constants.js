@@ -1,5 +1,17 @@
 const babelrc = JSON.stringify({
-  presets: ['@babel/preset-env'],
+  presets: [
+    '@babel/preset-env',
+  ],
+  env: {
+    production: {
+      presets: ['minify'],
+    },
+  },
+  plugins: [
+    '@babel/transform-runtime',
+    '@babel/transform-async-to-generator',
+    '@babel/plugin-proposal-object-rest-spread',
+  ],
 }, null, 2);
 
 const eslintignore = `coverage/*
@@ -165,6 +177,14 @@ const devDependencies = Object.freeze([
     version: 'latest',
   },
   {
+    name: '@babel/plugin-transform-async-to-generator',
+    version: 'latest',
+  },
+  {
+    name: '@babel/plugin-transform-runtime',
+    version: 'latest',
+  },
+  {
     name: '@commitlint/config-angular',
     version: 'latest',
   },
@@ -183,6 +203,10 @@ const devDependencies = Object.freeze([
   {
     name: 'babel-core',
     version: '7.0.0-bridge.0',
+  },
+  {
+    name: 'babel-preset-minify',
+    version: 'latest',
   },
   {
     name: 'codecov',
@@ -219,6 +243,7 @@ const devDependencies = Object.freeze([
 ]);
 
 const dependencies = Object.freeze([
+  '@babel/runtime',
   'commander',
   'inquirer',
 ]);
