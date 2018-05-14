@@ -12,6 +12,10 @@ const babelrc = JSON.stringify({
     '@babel/transform-async-to-generator',
     '@babel/plugin-proposal-object-rest-spread',
   ],
+  ignore: [
+    'node_modules',
+    '*.test.js',
+  ],
 }, null, 2);
 
 const eslintignore = `coverage/*
@@ -89,15 +93,21 @@ build
 .DS_Store
 `;
 
-const npmignore = `.DS_Store
-.eslintcache
-node_modules
+const npmignore = `node_modules/**
+src/**
+test/**
+coverage/**
+
 npm-debug.log
-.travis.yml
-src/
-test/
+commitlint.config.js
 *.test.js
-coverage/
+
+.DS_Store
+.eslintcache
+.travis.yml
+.babelrc
+.eslintignore
+.eslintrc
 `;
 
 const travis = `language: node_js

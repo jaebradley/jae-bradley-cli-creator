@@ -12,8 +12,8 @@ const generatePackageJSON = ({
   scripts: {
     codecov: 'codecov',
     commitmsg: 'commitlint -e $GIT_PARAMS',
-    compile: 'babel -d build/ src/ --ignore node_modules,*.test.js',
-    'compile:prod': 'BABEL_ENV=production babel npm run compile',
+    compile: 'babel src/ -d build/ --delete-dir-on-start --copy-files',
+    'compile:prod': 'BABEL_ENV=production npm run compile',
     lint: 'eslint --ext .js .',
     test: 'jest --coverage --passWithNoTests',
     prepublishOnly: 'npm run compile:prod',
