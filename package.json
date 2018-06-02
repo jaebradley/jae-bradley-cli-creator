@@ -60,7 +60,7 @@
     "child-process-promise": "^2.2.1",
     "commander": "^2.15.1",
     "fs-extra": "^6.0.0",
-    "inquirer": "^5.1.0",
+    "inquirer": "^6.0.0",
     "untildify": "^3.0.2"
   }
 }
