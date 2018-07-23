@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "es6",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "rootDir": "./src/",
+    "baseUrl": "./src/",
+    "paths": {
+      "App/*": ["./src/*"],
+      "Prompters/*": ["./src/prompters/*"],
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

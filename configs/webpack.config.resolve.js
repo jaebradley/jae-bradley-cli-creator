@@ -1,7 +1,12 @@
 const path = require('path');
 
 module.exports = {
+  modules: [
+    path.resolve(__dirname, '../src'),
+    'node_modules',
+  ],
   alias: {
-    Prompts: path.resolve(__dirname, '../src/prompters'),
+    App: path.resolve(__dirname, '../src'),
+    Prompters: path.resolve(__dirname, '../src/prompters'),
   },
 };
