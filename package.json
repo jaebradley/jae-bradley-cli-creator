@@ -2,9 +2,9 @@
   "name": "jae-bradley-cli-creator",
   "version": "0.0.0-development",
   "description": "Generate a new CLI package from the command line, based on my personal preferences",
-  "main": "index.js",
+  "main": "./build/index.js",
   "bin": {
-    "jb-create-cli": "build/executables/jb-create-cli.js"
+    "jb-create-cli": "./build/index.js"
   },
   "scripts": {
     "codecov": "codecov",
@@ -12,10 +12,12 @@
     "compile": "babel src/ -d build/ --delete-dir-on-start --copy-files",
     "lint": "eslint --ext .js .",
     "test": "jest --coverage --passWithNoTests",
-    "prepublishOnly": "npm run compile",
+    "prepublishOnly": "npm run webpack-production",
     "semantic-commit": "commit",
     "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "webpack": "./node_modules/.bin/webpack --config='./configs/webpack.config.development'",
+    "webpack-production": "./node_modules/.bin/webpack --config='./configs/webpack.config.production'"
   },
   "repository": {
     "type": "git",
@@ -45,6 +47,7 @@
     "@commitlint/config-angular": "^7.0.1",
     "@commitlint/prompt": "^7.0.0",
     "@commitlint/prompt-cli": "^7.0.0",
+    "babel-loader": "^8.0.0-beta.4",
     "codecov": "^3.0.2",
     "eslint": "^5.0.1",
     "eslint-config-airbnb-base": "^13.0.0",
@@ -52,7 +55,13 @@
     "husky": "^0.14.3",
     "jest": "^22.4.3",
     "semantic-release": "^15.1.4",
-    "travis-deploy-once": "^5.0.0"
+    "shebang-loader": "^0.0.1",
+    "travis-deploy-once": "^5.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-merge": "^4.1.3",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
