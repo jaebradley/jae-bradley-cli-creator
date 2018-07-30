@@ -2,5 +2,12 @@
   "extends": "airbnb-base",
   "env": {
     "jest": true
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./configs/webpack.config.common.js"
+      }
+    }
   }
 }

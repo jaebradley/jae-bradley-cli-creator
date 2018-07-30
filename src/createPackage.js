@@ -1,11 +1,13 @@
 import fs from 'fs-extra';
-import { spawn } from 'child_process';
+import {
+  spawn,
+} from 'child_process';
 import untildify from 'untildify';
 
-import promptTargetDirectory from './prompters/promptTargetDirectory';
-import promptPackageName from './prompters/promptPackageName';
-import promptGitHubUsername from './prompters/promptGitHubUsername';
-import promptPackageDescription from './prompters/promptPackageDescription';
+import promptTargetDirectory from 'Prompters/promptTargetDirectory';
+import promptPackageName from 'Prompters/promptPackageName';
+import promptGitHubUsername from 'Prompters/promptGitHubUsername';
+import promptPackageDescription from 'Prompters/promptPackageDescription';
 import generatePackageJSON from './generatePackageJSON';
 import {
   filesToCopy,

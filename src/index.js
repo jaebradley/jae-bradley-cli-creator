@@ -1,9 +1,7 @@
-#!/usr/bin/env node
-
 import program from 'commander';
+import createPackage from 'App/createPackage';
 
-import pkg from '../../package.json';
-import createPackage from '../createPackage';
+import pkg from '../package.json';
 
 const execute = async () => {
   try {
