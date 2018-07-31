@@ -69,11 +69,17 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
+    "@octokit/rest": "^15.9.4",
+    "chalk": "^2.4.1",
     "child-process-promise": "^2.2.1",
     "commander": "^2.15.1",
+    "email-validator": "^2.0.4",
     "fs-extra": "^7.0.0",
+    "globby": "^8.0.1",
     "inquirer": "^6.0.0",
+    "is-online": "^7.0.0",
     "mustache": "^2.3.0",
-    "untildify": "^3.0.2"
+    "untildify": "^3.0.2",
+    "validate-npm-package-name": "^3.0.0"
   }
 }
