@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const resolveConfig = require('./webpack.config.resolve');
 
 module.exports = {
@@ -14,6 +14,7 @@ module.exports = {
     filename: 'index.js',
   },
   plugins: [
+    new CleanWebpackPlugin(['./build']),
     new webpack.BannerPlugin({
       banner: '#!/usr/bin/env node',
       raw: true,
