@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const resolveConfig = require('./webpack.config.resolve');
 
 module.exports = {
@@ -14,11 +15,14 @@ module.exports = {
     filename: 'index.js',
   },
   plugins: [
-    new CleanWebpackPlugin(['./build']),
+    new CleanWebpackPlugin(['build'], { root: path.join(__dirname, '..') }),
     new webpack.BannerPlugin({
       banner: '#!/usr/bin/env node',
       raw: true,
     }),
+    new CopyWebpackPlugin([
+      { from: 'src/templates/', to: 'templates/' },
+    ]),
   ],
   module: {
     rules: [

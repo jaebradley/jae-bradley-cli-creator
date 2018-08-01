@@ -7,7 +7,9 @@ import mustache from 'mustache';
 
 const writeTemplateFiles = async ({ location, destination, templateValues = {} }) => {
   const files = await globby(location, { dot: true });
+  console.log('files', files);
   files.forEach((file) => {
+    console.log('file', file);
     const relativeFilePath = path.relative(location, file);
 
     let destinationFilePath = path.join(destination, relativeFilePath);
@@ -27,10 +29,11 @@ const writeTemplateFiles = async ({ location, destination, templateValues = {} }
     }
 
     fse.ensureFileSync(location);
-    fse.ensureFileSync(destination);
+    fse.ensureFileSync(destinationFilePath);
     const locationContents = fse.readFileSync(location, 'utf8');
     const content = mustache.render(locationContents, templateValues);
-    fse.writeFileSync(destination, content, 'utf8');
+    console.log('content', content);
+    fse.writeFileSync(destinationFilePath, content, 'utf8');
   });
 };
 

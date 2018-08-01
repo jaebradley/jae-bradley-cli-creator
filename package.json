@@ -50,6 +50,7 @@
     "babel-loader": "^8.0.0-beta.4",
     "clean-webpack-plugin": "^0.1.19",
     "codecov": "^3.0.2",
+    "copy-webpack-plugin": "^4.5.2",
     "eslint": "^5.0.1",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-import-resolver-webpack": "^0.10.1",
@@ -79,6 +80,8 @@
     "inquirer": "^6.0.0",
     "is-online": "^7.0.0",
     "mustache": "^2.3.0",
+    "normalize-package-data": "^2.4.0",
+    "sort-package-json": "^1.15.0",
     "untildify": "^3.0.2",
     "validate-npm-package-name": "^3.0.0"
   }
