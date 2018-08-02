@@ -4,7 +4,7 @@
   "description": "{{packageDescription}}",
   "main": "./build/index.js",
   "bin": {
-    "ghlang": "./build/index.js"
+    "{{packageName}}": "./build/index.js"
   },
   "global": true,
   "scripts": {
@@ -13,7 +13,7 @@
     "codecov": "codecov",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint": "eslint --ext .js .",
-    "test": "jest --coverage --passWithNoTests",
+    "test": "jest",
     "prepublishOnly": "npm run build:production",
     "semantic-commit": "commit",
     "semantic-release": "semantic-release",
@@ -30,7 +30,8 @@
   },
   "homepage": "https://github.com/{{gitHubUsername}}/{{packageName}}#readme",
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverage": true
   },
   "dependencies": {},
   "devDependencies": {
