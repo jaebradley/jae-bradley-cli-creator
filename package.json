@@ -9,14 +9,13 @@
   "scripts": {
     "codecov": "codecov",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "compile": "babel src/ -d build/ --delete-dir-on-start --copy-files",
     "lint": "eslint --ext .js .",
     "test": "jest --coverage --passWithNoTests",
     "prepublishOnly": "npm run webpack-production",
     "semantic-commit": "commit",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once",
-    "webpack-production": "NODE_ENV=production ./node_modules/.bin/webpack-dashboard -- ./node_modules/.bin/webpack --config './configs/webpack.config.production'",
+    "webpack-production": "NODE_ENV=production ./node_modules/.bin/webpack --config './configs/webpack.config.production'",
     "webpack-development": "NODE_ENV=development ./node_modules/.bin/webpack-dashboard -- ./node_modules/.bin/webpack --config './configs/webpack.config.development'"
   },
   "repository": {
@@ -35,7 +34,12 @@
   },
   "homepage": "https://github.com/jaebradley/jae-bradley-cli-creator#readme",
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "<rootDir>/build/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/src/templates/"
+    ]
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.42",
@@ -47,9 +51,11 @@
     "@commitlint/config-angular": "^7.0.1",
     "@commitlint/prompt": "^7.0.0",
     "@commitlint/prompt-cli": "^7.0.0",
+    "ajv": "^6.5.2",
     "babel-loader": "^8.0.0-beta.4",
     "clean-webpack-plugin": "^0.1.19",
     "codecov": "^3.0.2",
+    "copy-webpack-plugin": "^4.5.2",
     "eslint": "^5.0.1",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-import-resolver-webpack": "^0.10.1",
@@ -69,11 +75,19 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
-    "ajv": "^6.3.0",
+    "@octokit/rest": "^15.9.4",
+    "chalk": "^2.4.1",
     "child-process-promise": "^2.2.1",
     "commander": "^2.15.1",
+    "email-validator": "^2.0.4",
     "fs-extra": "^7.0.0",
+    "globby": "^8.0.1",
     "inquirer": "^6.0.0",
-    "untildify": "^3.0.2"
+    "is-online": "^7.0.0",
+    "mustache": "^2.3.0",
+    "normalize-package-data": "^2.4.0",
+    "sort-package-json": "^1.15.0",
+    "untildify": "^3.0.2",
+    "validate-npm-package-name": "^3.0.0"
   }
 }

@@ -1,0 +1,71 @@
+{
+  "name": "{{packageName}}",
+  "version": "0.0.0-development",
+  "description": "{{packageDescription}}",
+  "main": "./build/index.js",
+  "bin": {
+    "{{packageName}}": "./build/index.js"
+  },
+  "global": true,
+  "scripts": {
+    "build:production": "BABEL_ENV=production ./node_modules/.bin/rollup -c",
+    "build:development": "BABEL_ENV=development ./node_modules/.bin/rollup -c",
+    "codecov": "codecov",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "lint": "eslint --ext .js .",
+    "test": "jest",
+    "prepublishOnly": "npm run build:production",
+    "semantic-commit": "commit",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/{{gitHubUsername}}/{{packageName}}.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/{{gitHubUsername}}/{{packageName}}/issues"
+  },
+  "homepage": "https://github.com/{{gitHubUsername}}/{{packageName}}#readme",
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.44",
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-angular": "^7.0.1",
+    "@commitlint/prompt": "^7.0.0",
+    "@commitlint/prompt-cli": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.0.0",
+    "babel-preset-minify": "^0.4.0",
+    "codecov": "^3.0.2",
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "husky": "^0.14.3",
+    "jest": "^22.4.3",
+    "rollup": "^0.63.4",
+    "rollup-plugin-analyzer": "^2.1.0",
+    "rollup-plugin-babel": "^4.0.0-beta.7",
+    "rollup-plugin-babel-minify": "^5.0.0",
+    "rollup-plugin-cleaner": "^0.2.0",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-filesize": "^4.0.1",
+    "rollup-plugin-includepaths": "^0.2.3",
+    "rollup-plugin-json": "^3.0.0",
+    "rollup-plugin-local-resolve": "^1.0.7",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-preserve-shebang": "^0.1.6",
+    "rollup-plugin-shebang": "^0.1.5",
+    "rollup-plugin-terser": "^1.0.1",
+    "semantic-release": "^15.1.5",
+    "travis-deploy-once": "^5.0.0"
+  }
+}
