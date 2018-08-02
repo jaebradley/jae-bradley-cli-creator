@@ -13,6 +13,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../build'),
     filename: 'index.js',
+    library: 'jae-bradley-cli-creator',
+    libraryTarget: 'umd',
+  },
+  node: {
+    __dirname: true,
   },
   plugins: [
     new CleanWebpackPlugin(['build'], { root: path.join(__dirname, '..') }),

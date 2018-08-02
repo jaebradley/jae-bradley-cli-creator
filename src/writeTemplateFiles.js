@@ -4,14 +4,12 @@ import path from 'path';
 import fse from 'fs-extra';
 import mustache from 'mustache';
 
-
 const writeTemplateFiles = async ({ location, destination, templateValues = {} }) => {
   const files = await globby(location, { dot: true });
-  console.log('files', files);
   files.forEach((file) => {
-    console.log('file', file);
     const relativeFilePath = path.relative(location, file);
 
+    console.log('relative', relativeFilePath);
     let destinationFilePath = path.join(destination, relativeFilePath);
     // (Ass)uming that package.json will always be at base of destination
     // I can't wait until I regret hard-coding this
@@ -28,11 +26,10 @@ const writeTemplateFiles = async ({ location, destination, templateValues = {} }
       destinationFilePath = path.join(destination, '.gitignore');
     }
 
-    fse.ensureFileSync(location);
+    fse.ensureFileSync(file);
     fse.ensureFileSync(destinationFilePath);
-    const locationContents = fse.readFileSync(location, 'utf8');
+    const locationContents = fse.readFileSync(file, 'utf8');
     const content = mustache.render(locationContents, templateValues);
-    console.log('content', content);
     fse.writeFileSync(destinationFilePath, content, 'utf8');
   });
 };
