@@ -83,7 +83,7 @@
     "fs-extra": "^7.0.0",
     "globby": "^8.0.1",
     "inquirer": "^6.2.0",
-    "is-online": "^7.0.0",
+    "is-online": "^8.0.0",
     "mustache": "^3.0.0",
     "normalize-package-data": "^2.4.0",
     "sort-package-json": "^1.15.0",
