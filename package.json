@@ -80,7 +80,7 @@
     "child-process-promise": "^2.2.1",
     "commander": "^2.18.0",
     "email-validator": "^2.0.4",
-    "fs-extra": "^7.0.0",
+    "fs-extra": "^8.0.0",
     "globby": "^8.0.1",
     "inquirer": "^6.2.0",
     "is-online": "^7.0.0",
