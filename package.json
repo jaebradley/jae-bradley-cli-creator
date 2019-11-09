@@ -76,7 +76,7 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "@octokit/rest": "^15.11.2",
-    "chalk": "^2.4.1",
+    "chalk": "^3.0.0",
     "child-process-promise": "^2.2.1",
     "commander": "^2.18.0",
     "email-validator": "^2.0.4",
