@@ -86,7 +86,7 @@
     "is-online": "^7.0.0",
     "mustache": "^3.0.0",
     "normalize-package-data": "^2.4.0",
-    "sort-package-json": "^1.15.0",
+    "sort-package-json": "^1.37.0",
     "untildify": "^3.0.3",
     "validate-npm-package-name": "^3.0.0"
   }
