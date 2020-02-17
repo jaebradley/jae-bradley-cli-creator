@@ -5,6 +5,8 @@ import normalizePackageData from 'normalize-package-data';
 import sortPackageJSON from 'sort-package-json';
 import isOnline from 'is-online';
 import chalk from 'chalk';
+
+// eslint-disable-next-line import/no-extraneous-dependencies
 import path from 'path';
 
 import prompts from './prompts';
