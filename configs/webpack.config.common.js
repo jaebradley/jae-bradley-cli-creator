@@ -1,7 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const resolveConfig = require('./webpack.config.resolve');
 
@@ -20,7 +22,7 @@ module.exports = {
     __dirname: true,
   },
   plugins: [
-    new CleanWebpackPlugin(['build'], { root: path.join(__dirname, '..') }),
+    new CleanWebpackPlugin(),
     new webpack.BannerPlugin({
       banner: '#!/usr/bin/env node',
       raw: true,

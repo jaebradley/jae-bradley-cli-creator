@@ -1,6 +1,11 @@
-[![Greenkeeper badge](https://badges.greenkeeper.io/jaebradley/jae-bradley-cli-creator.svg)](https://greenkeeper.io/)
-
 # jae-bradley-cli-creator
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/jaebradley/jae-bradley-cli-creator.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/jaebradley/jae-bradley-cli-creator.svg?branch=master)](https://travis-ci.org/jaebradley/jae-bradley-cli-creator)
+[![codecov](https://codecov.io/gh/jaebradley/jae-bradley-cli-creator/branch/master/graph/badge.svg)](https://codecov.io/gh/jaebradley/jae-bradley-cli-creator)
+[![npm](https://img.shields.io/npm/v/jae-bradley-cli-creator.svg)](https://www.npmjs.com/package/jae-bradley-cli-creator)
+[![npm-total-downloads](https://img.shields.io/npm/dt/jae-bradley-cli-creator.svg)](https://www.npmjs.com/package/jae-bradley-cli-creator)
+![GitHub](https://img.shields.io/github/license/jaebradley/jae-bradley-cli-creator)
 
 CLI that creates the starting point for npm package CLI projects using a base template I like
 
