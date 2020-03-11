@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.8.4",
-    "@octokit/rest": "^17.0.0",
+    "@octokit/rest": "^17.1.0",
     "chalk": "^3.0.0",
     "child-process-promise": "^2.2.1",
     "commander": "^4.1.1",
