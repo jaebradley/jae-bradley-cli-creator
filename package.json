@@ -73,7 +73,7 @@
     "@octokit/rest": "^17.0.0",
     "chalk": "^3.0.0",
     "child-process-promise": "^2.2.1",
-    "commander": "^4.1.1",
+    "commander": "^5.1.0",
     "email-validator": "^2.0.4",
     "fs-extra": "^8.1.0",
     "globby": "^11.0.0",
