@@ -69,7 +69,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.4",
+    "@babel/runtime": "^7.9.6",
     "@octokit/rest": "^17.0.0",
     "chalk": "^3.0.0",
     "child-process-promise": "^2.2.1",
